@@ -19,4 +19,7 @@ EntityManager entityManager = HibernateUtil.getEntityManager();
 		copo.setId(id);
 		entityManager.remove(copo.getId());
 	}
+	public void deleteAllCoposInGarrafa(Long id) {
+		entityManager.createQuery("DELETE FROM Copo c WHERE c.ga_nu = ?1").setParameter(1, id);
+	}
 }

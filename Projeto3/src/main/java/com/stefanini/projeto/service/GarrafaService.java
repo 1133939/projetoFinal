@@ -25,24 +25,6 @@ public class GarrafaService {
 			copoDao.save(copo);
 		}
 	}
-	//          Verifica se existe uma Garrafa cadastrada com um nome garrafa.getNome antes de cadastrar
-	private boolean garrafaExists(Garrafa garrafa) {
-		List<Garrafa> garrafas = garrafaDao.findGarrafaByName(garrafa);
-		if(garrafas.size()==1) {
-		return true;
-	}else {
-		return false;
-	}
-	}
-	//               Retorna true caso a Garrafa tenha menos que 5 Copos
-	private boolean lessThenFiveCopos (Garrafa garrafa) {
-		if(garrafaDao.findAllById(garrafa).size()<5) {
-			System.out.println("Pode ter mais copos");
-			return true;
-		}
-		System.out.println("Não pode ter mais copos");
-			return false;
-	}
 
 	public void saveGarrafa(Garrafa garrafa) {
 		if(garrafaExists(garrafa)) {
@@ -64,7 +46,9 @@ public class GarrafaService {
 		System.out.println("Garrafa com este nome já cadastrado");
 		}
 	}
+	//        Deleta primeiro os Copos através de uma query depois a Garrafa
 	public void delete(Long id) {
+		this.copoDao.deleteAllCoposInGarrafa(id);
 		this.garrafaDao.delete(id);
 	}
 	public void setGarrafaDao(GarrafaDAO garrafaDao) {
@@ -78,6 +62,28 @@ public class GarrafaService {
 						: numero1 % 2l != 0 && numero2 % 2l != 0 
 						? numero1-numero2 
 								: 0l;
+	}
+	
+	
+	// 					Métodos lógicos do negócio
+	//
+	//          Verifica se existe uma Garrafa cadastrada com um nome garrafa.getNome antes de cadastrar
+	private boolean garrafaExists(Garrafa garrafa) {
+		List<Garrafa> garrafas = garrafaDao.findGarrafaByName(garrafa);
+		if(garrafas.size()==1) {
+		return true;
+	}else {
+		return false;
+	}
+	}
+	//               Retorna true caso a Garrafa tenha menos que 5 Copos
+	private boolean lessThenFiveCopos (Garrafa garrafa) {
+		if(garrafaDao.findAllById(garrafa).size()<5) {
+			System.out.println("Pode ter mais copos");
+			return true;
+		}
+		System.out.println("Não pode ter mais copos");
+			return false;
 	}
 
 }
