@@ -1,10 +1,14 @@
-<div class="jumbotron">
+ <!-- LISTAR -->
 
-  <!-- LISTAR -->
+<div class="jumbotron">
   <h1>Listar {{vm.name}}</h1>
   <div class="row">
+
+              <!-- BUSCA NECESSITA DE AJUSTES -->
     Busca garrafa: <input type="text" ng-model="vm.model.buscanome" maxlength="20"/>
      <input type="submit" id="busca" ng-click="vm.searchGarrafa()" value="Buscar""/>
+               <!-- NECESSITA DE AJUSTES -->
+
     <table class="table table-hover table-dark">
       <thead>
         <tr>
@@ -15,34 +19,36 @@
       </thead>
       <tbody ng-repeat='garrafa in vm.garrafas'>
         <tr>
-            <td><b>{{$index+1}}</b></td>
-            <td>{{garrafa.nome}} </td>
-            <td>{{garrafa.copos.length}}</td>
-            <td>  <input type="submit" id="delete" ng-click="vm.deleteGarrafa(garrafa.id)" value="Deletar"/></td>
-            <td><input type="submit" name="edit" value="Editar" ng-click="vm.editGarrafa(garrafa)"></td>
+          <td><b>{{$index+1}}</b></td>
+          <td>{{garrafa.nome}} </td>
+          <td>{{garrafa.copos.length}}</td>
+          <!-- NECESSITA DE AJUSTES -->
+          <td><input type="submit" id="delete" ng-click="vm.deleteGarrafa(garrafa.id)" value="Deletar"/></td>
+          <td><input type="submit" name="edit" value="Editar" ng-click="vm.editGarrafa(garrafa)"></td>
+          <!-- NECESSITA DE AJUSTES -->
         </tr>   
       </tbody>
-    </table>
-    
+    </table>    
   </div>  
+
 <!-- CADASTRAR -->
+
   <h2>Cadastrar {{vm.name}}</h2>
-<form>
-  Garrafa: <input type="text" ng-model="vm.model.nome" name="garrafa" id="garrafa" maxlength="20"/>
+ Garrafa: <input type="text" ng-model="vm.model.nome" name="garrafa" id="garrafa" maxlength="20"/>
   <input type="submit" id="save" ng-click="vm.saveGarrafa()" value="Salvar" /><br>
-</form>
-     <!--  Botão add funcionando e validando o maximo de 5 copos -->
  Copo: <input type="text" ng-model="vm.nomeCopo" name="copo" maxlength="20"/>
   <input type="submit" id="save" ng-click="vm.addCopo(vm.nomeCopo)" value="Add""/>
-
 <div ng-repeat='copo in vm.model.copos'>
   <p>{{copo.nome}}</p>
 </div>
+
 <!-- EDITAR -->
 
-<h3> Editar  
-  <input type="text" value="vm.garrafaCopo" ng-model="" /><br>
+          <!-- NECESSITA DE AJUSTES -->
+<h3> Editar Copo<h3>
+  <input type="text" value="vm.garrafaCopo.nome" ng-model="" maxlength="20"/><br>
   <div ng-repeat='copoEdit in vm.garrafaCopo.copos'>
     <p>{{copoEdit.nome}}</p>
   </div>
        <input type="submit" id="editar" ng-click="" value="Atualizar" /><br>
+          <!-- NECESSITA DE AJUSTES -->

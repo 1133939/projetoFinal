@@ -8,6 +8,7 @@ export default class GarrafaController {
     this.addCopo = addCopo;
     vm.model = {};
     vm.model.copos = [];
+    vm.garrafaCopo=[];
 
     init();
 
