@@ -26,14 +26,14 @@ export default class GarrafaController {
     function addCopo(nomeCopo){
 
       var vm = this;
-      // Validacao seguido de retorno da lista
-      if(vm.model.copos.length<5){
+      // Adicionado validação para nao receber parametro vazio
+      if(vm.model.copos.length<5 && nomeCopo != ""){
       vm.model.copos.push({nome: nomeCopo});
       vm.model.copos;
       listaCopos();
     }
     }
-    // lista Copos retorna a view a lista completa após ser tratada na funcao addCopo
+    // Lista Copos retorna a view a lista completa após ser tratada na funcao addCopo
     function listaCopos(){
       vm.nomeCopo="";
     return vm.model.copos
