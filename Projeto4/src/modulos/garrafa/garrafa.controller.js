@@ -6,6 +6,10 @@ export default class GarrafaController {
     var vm = this;
     this.name = 'Garrafa';
     this.addCopo = addCopo;
+    this.saveGarrafa = saveGarrafa;
+    this.deleteGarrafa = deleteGarrafa;
+    this.searchGarrafa = searchGarrafa;
+    this.editGarrafa = editGarrafa;
     vm.model = {};
     vm.model.copos = [];
     vm.garrafaCopo=[];
@@ -27,19 +31,17 @@ export default class GarrafaController {
     function addCopo(nomeCopo){
 
       var vm = this;
-      // Adicionado validação para nao receber parametro vazio
-      if(vm.model.copos.length<5 && nomeCopo != ""){
+     if(vm.model.copos.length<5 && nomeCopo != ""){
       vm.model.copos.push({nome: nomeCopo});
       vm.model.copos;
-      listaCopos();
+     listaCopos();
+   }
     }
-    }
-    // Lista Copos retorna a view a lista completa após ser tratada na funcao addCopo
-    function listaCopos(){
-      vm.nomeCopo="";
-    return vm.model.copos
 
-    }
+   function listaCopos(){
+     vm.nomeCopo="";
+
+   }
       function deleteGarrafa(id){
     
   garrafaService.deleteGarrafa(id);

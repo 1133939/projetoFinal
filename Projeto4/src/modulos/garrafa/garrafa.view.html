@@ -34,8 +34,10 @@
 <!-- CADASTRAR -->
 
   <h2>Cadastrar {{vm.name}}</h2>
+  <form>
  Garrafa: <input type="text" ng-model="vm.model.nome" name="garrafa" id="garrafa" maxlength="20"/>
   <input type="submit" id="save" ng-click="vm.saveGarrafa()" value="Salvar" /><br>
+</form>
  Copo: <input type="text" ng-model="vm.nomeCopo" name="copo" maxlength="20"/>
   <input type="submit" id="save" ng-click="vm.addCopo(vm.nomeCopo)" value="Add""/>
 <div ng-repeat='copo in vm.model.copos'>
@@ -45,10 +47,10 @@
 <!-- EDITAR -->
 
           <!-- NECESSITA DE AJUSTES -->
-<h3> Editar Copo<h3>
+<!-- <h3> Editar Copo<h3>
   <input type="text" value="vm.garrafaCopo.nome" ng-model="" maxlength="20"/><br>
   <div ng-repeat='copoEdit in vm.garrafaCopo.copos'>
     <p>{{copoEdit.nome}}</p>
   </div>
-       <input type="submit" id="editar" ng-click="" value="Atualizar" /><br>
+       <input type="submit" id="editar" ng-click="" value="Atualizar" /><br> -->
           <!-- NECESSITA DE AJUSTES -->

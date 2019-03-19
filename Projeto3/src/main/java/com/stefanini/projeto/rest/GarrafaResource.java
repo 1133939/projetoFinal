@@ -33,6 +33,7 @@ public class GarrafaResource {
 		}
 		return Response.ok(garrafas).build();
 	}
+	//Falta criar o get da Busca por nome
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
