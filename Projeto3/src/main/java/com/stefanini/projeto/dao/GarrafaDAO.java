@@ -15,10 +15,10 @@ public class GarrafaDAO {
 		return entityManager.createQuery("select distinct g from Garrafa g left join g.copos", Garrafa.class).getResultList();
 	}
 	public List<Garrafa> findAllById(Garrafa garrafa) {
-		return entityManager.createQuery("select distinct g from Garrafa g left join g.copos where g.ga_nu=?1", Garrafa.class).setParameter(1, garrafa.getId()).getResultList();
+		return entityManager.createQuery("select distinct g from Garrafa g left join g.copos where g.id=?1", Garrafa.class).setParameter(1, garrafa.getId()).getResultList();
 	}
 	public List<Garrafa> findGarrafaByName(Garrafa garrafa) {
-		List<Garrafa> garrafas = entityManager.createQuery("select g from Garrafa g where g.ga_no=?1", Garrafa.class).setParameter(1, garrafa.getNome()).getResultList();
+		List<Garrafa> garrafas = entityManager.createQuery("select g from Garrafa g where g.nome=?1", Garrafa.class).setParameter(1, garrafa.getNome()).getResultList();
 		return garrafas;
 	}
 	public void save(Garrafa garrafa) {

@@ -37,6 +37,10 @@ public class GarrafaService {
 		}else {
 		this.garrafaDao.save(garrafa);
 		System.out.println("Salvando... Garrafa");
+		for(Copo copo : garrafa.getCopos()) {
+		this.copoDao.save(copo);
+		}
+		
 	}
 	}
 	public void update(Garrafa garrafa) {

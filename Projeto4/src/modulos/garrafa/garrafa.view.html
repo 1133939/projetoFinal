@@ -1,8 +1,10 @@
 <div class="jumbotron">
-  <h1>Listar {{vm.name}}</h1>
 
+  <!-- LISTAR -->
+  <h1>Listar {{vm.name}}</h1>
   <div class="row">
-    
+    Busca garrafa: <input type="text" ng-model="vm.model.buscanome" maxlength="20"/>
+     <input type="submit" id="busca" ng-click="vm.searchGarrafa()" value="Buscar""/>
     <table class="table table-hover table-dark">
       <thead>
         <tr>
@@ -16,21 +18,31 @@
             <td><b>{{$index+1}}</b></td>
             <td>{{garrafa.nome}} </td>
             <td>{{garrafa.copos.length}}</td>
-            <td><button ng-click="delete(garrafa.ga_nu)">Deletar</button></td>
-            <td><input type="submit" onClick="edit(garrafa)" name="edit" value="Editar"></td>
+            <td>  <input type="submit" id="delete" ng-click="vm.deleteGarrafa(garrafa.id)" value="Deletar"/></td>
+            <td><input type="submit" name="edit" value="Editar" ng-click="vm.editGarrafa(garrafa)"></td>
         </tr>   
       </tbody>
     </table>
     
   </div>  
-
-
+<!-- CADASTRAR -->
   <h2>Cadastrar {{vm.name}}</h2>
-
-<form ng-submit="saveGarrafa()" ng-controller="GarrafaController">
-  Garrafa: <input type="text" ng-model="garrafa.ga_no" name="garrafa" maxlength="20"/>
-  Copo: <input type="text" ng-model="copo.co_nome" name="copo" maxlength="20"/>
-  <input type="submit" id="save" value="Salvar" />
+<form>
+  Garrafa: <input type="text" ng-model="vm.model.nome" name="garrafa" id="garrafa" maxlength="20"/>
+  <input type="submit" id="save" ng-click="vm.saveGarrafa()" value="Salvar" /><br>
 </form>
+     <!-- Upgrade Botão add funcionando e validando o maximo de 5 copos -->
+ Copo: <input type="text" ng-model="vm.nomeCopo" name="copo" maxlength="20"/>
+  <input type="submit" id="save" ng-click="vm.addCopo(vm.nomeCopo)" value="Add""/>
 
+<div ng-repeat='copo in vm.model.copos'>
+  <p>{{copo.nome}}</p>
 </div>
+<!-- EDITAR -->
+
+<h3> Editar  
+  <input type="text" value="vm.garrafaCopo" ng-model="" /><br>
+  <div ng-repeat='copoEdit in vm.garrafaCopo.copos'>
+    <p>{{copoEdit.nome}}</p>
+  </div>
+       <input type="submit" id="editar" ng-click="" value="Atualizar" /><br>

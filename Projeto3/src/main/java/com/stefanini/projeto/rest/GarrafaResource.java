@@ -26,6 +26,7 @@ public class GarrafaResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response findAll() {
+			
 		List<Garrafa> garrafas = garrafaService.findAll();
 		if (garrafas.isEmpty()) {
 			return Response.ok().build();
@@ -35,7 +36,7 @@ public class GarrafaResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createDono (Garrafa garrafa) {
+	public Response create (Garrafa garrafa) {
 		garrafaService.saveGarrafa(garrafa);
 		return Response.status(Response.Status.OK).build();
 	}

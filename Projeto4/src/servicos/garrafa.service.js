@@ -13,7 +13,13 @@ class GarrafaService {
         return this.$http.get(this.path);
     }
    deleteGarrafa(id){
-   	this.$http.delete(id);
+   	this.$http.delete(this.path, id);
+  }
+  saveGarrafa(garrafa){
+    this.$http.post(this.path, garrafa);
+  }
+  searchGarrafa(garrafa){
+   return this.$http.get(this.path, garrafa);
   }
 
 }
