@@ -1,11 +1,12 @@
- <!-- LISTAR -->
-
 <div class="jumbotron">
   <h1><center>CRUD {{vm.name}} - Copo</center></h1>
+  <!-- BUSCAR GARRAFA POR NOME -->
   <center>Buscar Garrafa: <input type="text" ng-model="vm.model.buscanome" maxlength="20"/>
                   <input type="submit" id="busca" ng-click="vm.searchGarrafa()" value="Buscar""/></center>
+  <!-- FIM BUSCAR GARRAFA POR NOME -->
+
+   <!-- LISTAR -->
   <div class="row">
-               <!-- NECESSITA DE AJUSTES -->
     <table class="table table-hover table-dark">
       <thead>
         <tr>
@@ -19,16 +20,22 @@
           <td><b>{{$index+1}}</b></td>
           <td>{{garrafa.nome}} </td>
           <td>{{garrafa.copos.length}}</td>
+
           <!-- DELETE -->
           <td><input type="submit" id="delete" ng-click="vm.deleteGarrafa(garrafa.id)" value="Deletar"/></td>
+          <!-- FIM DELETE -->
+
+          <!-- UPDATE -->
           <td><input type="submit" name="edit" value="Editar" ng-click="vm.editGarrafa(garrafa)"></td>
-          <!-- NECESSITA DE AJUSTES -->
+          <!-- FIM UPDATE -->
+
         </tr>   
       </tbody>
     </table>    
   </div>  
+ <!-- FIM LISTAR -->
 
-<!-- CADASTRAR -->
+<!-- INSERT -->
 
   <center><h4>Cadastrar {{vm.name}}</h4>
   <form>
@@ -41,20 +48,9 @@
   <b>Copo {{$index+1}}: {{copo.nome}}</b>
 </div>
 </center>
+<!-- FIM CADASTRAR -->
 
-<!-- EDITAR -->
-
-          <!-- NECESSITA DE AJUSTES -->
-<!-- <h3> Editar Copo </h3>
-  <input type="text" value="vm.garrafaCopo.nome" ng-model="vm.editaGarrafa" maxlength="20"/>
-  <div ng-repeat='copoEdit in vm.garrafaCopo.copos'>
-    <p>{{copoEdit.nome}}</p>
-  </div>
-       <input type="submit" id="editar" ng-click="vm.editarGarrafa()" value="Atualizar" /> -->
-
-
-          <!-- NECESSITA DE AJUSTES -->
-
+<!-- UPDATE -->
 <h4><center>Editar Garrafa</center></h4>
 <div class="row">
            <table class="table table-hover table-dark">
@@ -67,8 +63,10 @@
       <tbody ng-repeat='copoEdit in vm.garrafaCopo.copos'>
         <tr>
           <td>{{copoEdit.nome}} </td>
-          <td><input type="submit" id="deleteCopo" ng-click="vm.deleteCopo(copoEdit.id)" value="Excluir Copo"/></td>
+          <td><input type="submit" id="deleteCopo" ng-click="vm.deleteCopo(copoEdit.id)" value="Excluir Copo"/>
+          </td>
         </tr>   
       </tbody>
     </table>    
 </div>
+<!-- FIM UPDATE -->

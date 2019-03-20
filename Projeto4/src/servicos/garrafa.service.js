@@ -13,25 +13,23 @@ class GarrafaService {
     getGarrafas() {
         return this.$http.get(this.path);
     }
-   deleteGarrafa(id){
-   	this.$http.delete(this.path+'/'+id);
-
-  }
   saveGarrafa(garrafa){
     this.$http.post(this.path, garrafa);
   }
-  // NA CAMADA REST FALTA CRIAR O GET BUSCA POR NOME
-  searchGarrafa(garrafa){
+  findGarrafa(garrafa){
     console.log('teste'+garrafa)
    return this.$http.get(this.path+'/'+garrafa);
   }
-  editarGarrafa(garrafa){
+  editGarrafa(garrafa){
     console.log('teste2'+garrafa.id);
   this.$http.put(this.path+'/'+garrafa.id, garrafa);
   }
   deleteCopo(id){
     console.log('ASDADZ  '+id);
   this.$http.delete(this.pathCopo+'/'+id);  
+  }
+  deleteGarrafa(id){
+    this.$http.delete(this.path+'/'+id);
   }
 
 }
