@@ -1,14 +1,11 @@
  <!-- LISTAR -->
 
 <div class="jumbotron">
-  <h1>Listar {{vm.name}}</h1>
+  <h1><center>CRUD {{vm.name}} - Copo</center></h1>
+  <center>Buscar Garrafa: <input type="text" ng-model="vm.model.buscanome" maxlength="20"/>
+                  <input type="submit" id="busca" ng-click="vm.searchGarrafa()" value="Buscar""/></center>
   <div class="row">
-
-              <!-- BUSCA NECESSITA DE AJUSTES -->
-    Busca garrafa: <input type="text" ng-model="vm.model.buscanome" maxlength="20"/>
-     <input type="submit" id="busca" ng-click="vm.searchGarrafa()" value="Buscar""/>
                <!-- NECESSITA DE AJUSTES -->
-
     <table class="table table-hover table-dark">
       <thead>
         <tr>
@@ -22,7 +19,7 @@
           <td><b>{{$index+1}}</b></td>
           <td>{{garrafa.nome}} </td>
           <td>{{garrafa.copos.length}}</td>
-          <!-- NECESSITA DE AJUSTES -->
+          <!-- DELETE -->
           <td><input type="submit" id="delete" ng-click="vm.deleteGarrafa(garrafa.id)" value="Deletar"/></td>
           <td><input type="submit" name="edit" value="Editar" ng-click="vm.editGarrafa(garrafa)"></td>
           <!-- NECESSITA DE AJUSTES -->
@@ -33,24 +30,45 @@
 
 <!-- CADASTRAR -->
 
-  <h2>Cadastrar {{vm.name}}</h2>
+  <center><h4>Cadastrar {{vm.name}}</h4>
   <form>
- Garrafa: <input type="text" ng-model="vm.model.nome" name="garrafa" id="garrafa" maxlength="20"/>
+ Nome da garrafa: <input type="text" ng-model="vm.model.nome" name="garrafa" id="garrafa" maxlength="20"/>
   <input type="submit" id="save" ng-click="vm.saveGarrafa()" value="Salvar" /><br>
 </form>
- Copo: <input type="text" ng-model="vm.nomeCopo" name="copo" maxlength="20"/>
+ Nome do copo: <input type="text" ng-model="vm.nomeCopo" name="copo" maxlength="20"/>
   <input type="submit" id="save" ng-click="vm.addCopo(vm.nomeCopo)" value="Add""/>
 <div ng-repeat='copo in vm.model.copos'>
-  <p>{{copo.nome}}</p>
+  <b>Copo {{$index+1}}: {{copo.nome}}</b>
 </div>
+</center>
 
 <!-- EDITAR -->
 
           <!-- NECESSITA DE AJUSTES -->
-<!-- <h3> Editar Copo<h3>
-  <input type="text" value="vm.garrafaCopo.nome" ng-model="" maxlength="20"/><br>
+<!-- <h3> Editar Copo </h3>
+  <input type="text" value="vm.garrafaCopo.nome" ng-model="vm.editaGarrafa" maxlength="20"/>
   <div ng-repeat='copoEdit in vm.garrafaCopo.copos'>
     <p>{{copoEdit.nome}}</p>
   </div>
-       <input type="submit" id="editar" ng-click="" value="Atualizar" /><br> -->
+       <input type="submit" id="editar" ng-click="vm.editarGarrafa()" value="Atualizar" /> -->
+
+
           <!-- NECESSITA DE AJUSTES -->
+
+<h4><center>Editar Garrafa</center></h4>
+<div class="row">
+           <table class="table table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Escolha um novo nome para a garrafa: <input type="text" placeholder={{vm.garrafaCopo.nome}} ng-model="vm.editaGarrafa" maxlength="20"/></th>
+          <th scope="col"><input type="submit" id="editar" ng-click="vm.editarGarrafa()" value="Atualizar" /></th>
+        </tr>
+      </thead>
+      <tbody ng-repeat='copoEdit in vm.garrafaCopo.copos'>
+        <tr>
+          <td>{{copoEdit.nome}} </td>
+          <td><input type="submit" id="deleteCopo" ng-click="vm.deleteCopo(copoEdit.id)" value="Excluir Copo"/></td>
+        </tr>   
+      </tbody>
+    </table>    
+</div>

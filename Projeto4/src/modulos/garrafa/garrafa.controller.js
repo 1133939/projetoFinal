@@ -10,9 +10,13 @@ export default class GarrafaController {
     this.deleteGarrafa = deleteGarrafa;
     this.searchGarrafa = searchGarrafa;
     this.editGarrafa = editGarrafa;
+    this.editarGarrafa = editarGarrafa;
+    this.deleteCopo = deleteCopo;
     vm.model = {};
     vm.model.copos = [];
-    vm.garrafaCopo=[];
+    vm.garrafaCopo;
+    vm.editaGarrafa;
+
 
     init();
 
@@ -43,20 +47,29 @@ export default class GarrafaController {
 
    }
       function deleteGarrafa(id){
-    
   garrafaService.deleteGarrafa(id);
   }
   function searchGarrafa(){
           var vm = this;
-      garrafaService.searchGarrafa(vm.model.buscanome).then(function cba(resp){
-        vm.garrafas=resp.data;
+      garrafaService.searchGarrafa(vm.model.buscanome).then(function cba(resposta){
+        vm.garrafas=resposta.data;
       });
   }
   function editGarrafa(garrafa){
     var vm = this;
+    console.log('asd'+garrafa.nome)
      vm.garrafaCopo = garrafa;
-     return vm.garrafaCopo;
+     console.log('ASDZ'+vm.garrafaCopo.nome);
   }
+  function editarGarrafa(){
+    var vm = this;
+    vm.garrafaCopo.nome=vm.editaGarrafa;
+garrafaService.editarGarrafa(vm.garrafaCopo);
+  }
+
+function deleteCopo(id){
+  garrafaService.deleteCopo(id);
+}
 
   }
 }

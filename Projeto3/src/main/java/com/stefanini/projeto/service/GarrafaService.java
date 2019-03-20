@@ -20,6 +20,9 @@ public class GarrafaService {
 		return garrafaDao.findAll();
 	}
 	
+	public List<Garrafa> buscaPorNome(String garrafa){
+		return garrafaDao.findGarrafaByName(garrafa);
+	}
 	public void saveCopo(Copo copo) {
 		if(lessThenFiveCopos(copo.getGarrafa())) {
 			copoDao.save(copo);
@@ -27,32 +30,26 @@ public class GarrafaService {
 	}
 
 	public void saveGarrafa(Garrafa garrafa) {
-		if(garrafaExists(garrafa)) {
-			System.out.println("Garrafa com este nome já cadastrado");
+		if(garrafaNotExists(garrafa)) {
 			if(lessThenFiveCopos(garrafa)) {
 			this.garrafaDao.save(garrafa);
 			}else {
-			System.out.println("Esta garrafa já possui 5 copos");
+				System.out.println("Esta garrafa já possui 5 copos");
 			}
+			System.out.println("Salvando... Garrafa");
 		}else {
-		this.garrafaDao.save(garrafa);
-		System.out.println("Salvando... Garrafa");
-		for(Copo copo : garrafa.getCopos()) {
-		this.copoDao.save(copo);
-		}
-		
+			System.out.println("Garrafa com este nome já está cadastrado");	
 	}
 	}
 	public void update(Garrafa garrafa) {
-		if(garrafaExists(garrafa)) {
+		if(garrafaNotExists(garrafa)) {
 		this.garrafaDao.update(garrafa);
 		}else {
 		System.out.println("Garrafa com este nome já cadastrado");
 		}
 	}
-	//        Deleta primeiro os Copos através de uma query depois a Garrafa
+
 	public void delete(Long id) {
-		this.copoDao.deleteAllCoposInGarrafa(id);
 		this.garrafaDao.delete(id);
 	}
 	public void setGarrafaDao(GarrafaDAO garrafaDao) {
@@ -71,10 +68,10 @@ public class GarrafaService {
 	
 	// 					Métodos lógicos do negócio
 	//
-	//          Verifica se existe uma Garrafa cadastrada com um nome garrafa.getNome antes de cadastrar
-	private boolean garrafaExists(Garrafa garrafa) {
-		List<Garrafa> garrafas = garrafaDao.findGarrafaByName(garrafa);
-		if(garrafas.size()==1) {
+	//          Verifica se não existe uma Garrafa cadastrada com um nome garrafa.getNome antes de cadastrar
+	private boolean garrafaNotExists(Garrafa garrafa) {
+		List<Garrafa> garrafas = garrafaDao.findGarrafaByNameWhere(garrafa);
+		if(garrafas.size()==0) {
 		return true;
 	}else {
 		return false;

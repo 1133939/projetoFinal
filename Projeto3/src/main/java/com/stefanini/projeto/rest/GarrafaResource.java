@@ -33,6 +33,16 @@ public class GarrafaResource {
 		}
 		return Response.ok(garrafas).build();
 	}
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/{garrafa}")
+	public Response getBusca(@PathParam("garrafa") String garrafa) {
+		List<Garrafa> garrafas = garrafaService.buscaPorNome(garrafa);
+		if (garrafas.isEmpty()) {
+			return Response.ok().build();
+		}
+		return Response.ok(garrafas).build();
+	}
 	//Falta criar o get da Busca por nome
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -43,16 +53,16 @@ public class GarrafaResource {
 	}
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response update(Garrafa garrafa) {
+    public Response update(@PathParam("id") Long id, Garrafa garrafa) {
+    	System.out.println("");
        garrafaService.update(garrafa);
 		return Response.status(Response.Status.OK).build();
     }
 	
 	@DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("id") Long id) {
         garrafaService.delete(id);

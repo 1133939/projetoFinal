@@ -1,11 +1,13 @@
 package com.stefanini.projeto.dao;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import com.stefanini.projeto.model.Copo;
 import com.stefanini.projeto.util.HibernateUtil;
-
+@Transactional
 public class CopoDAO {
+
 EntityManager entityManager = HibernateUtil.getEntityManager();
 	
 	public void save(Copo copo) {

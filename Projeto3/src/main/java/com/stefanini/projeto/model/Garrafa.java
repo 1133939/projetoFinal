@@ -3,6 +3,7 @@ package com.stefanini.projeto.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +29,7 @@ public class Garrafa implements Serializable{
 
 
 
-	@OneToMany(mappedBy = "garrafa")
+	@OneToMany(mappedBy = "garrafa",cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<Copo> copos;
 
 	public Garrafa() {
