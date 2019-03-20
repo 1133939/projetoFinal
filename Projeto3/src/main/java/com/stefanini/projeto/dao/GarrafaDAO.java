@@ -27,13 +27,24 @@ public class GarrafaDAO {
 		return garrafas;
 	}
 	public void save(Garrafa garrafa) {
+		abrirTransaction();
 	entityManager.persist(garrafa);	
+		commitTransaction();
 	}
 	public void update(Garrafa garrafa) {
+		abrirTransaction();
 	entityManager.merge(garrafa);	
+		commitTransaction();
 	}
 	public void delete(Long id) {
+		abrirTransaction();
 	entityManager.remove(id);
+	commitTransaction();
 	}
-
+	public void abrirTransaction() {
+		entityManager.getTransaction().begin();
+	}
+	public void commitTransaction() {
+		entityManager.getTransaction().commit();
+	}
 }
